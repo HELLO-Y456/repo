@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail Touristique du Maroc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        .banner {
+            background: linear-gradient(to bottom, #e1b7c7, #b9a0d9);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .banner h1 {
+            font-size: 3em;
+        }
+        .banner p {
+            font-size: 1.5em;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ff6347;
+        }
+    </style>
+</head>
+<body>
+    <header class="banner">
+        <div class="container">
+            <h1 id="greeting"></h1>
+            <p>Un voyage inoubliable au cœur de la culture et des paysages marocains</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#activites">Activités</a></li>
+                <li><a href="#pratique">Pratique</a></li>
+                <li><a href="#evenements">Événements</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#communaute">Communauté</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="accueil">
+        <h2>Bienvenue sur le Portail Touristique du Maroc</h2>
+        <p>Explorez le Maroc à travers ses différentes destinations et ses activités passionnantes.</p>
+    </section>
+<section id="destinations" class="section">
+        <h2>Destinations</h2>
+        <div class="destination-list">
+            <article class="destination-item">
+                <h3>Marrakech</h3>
+                <p>Explorez les souks, les palais et les jardins.</p>
+            </article>
+            <article class="destination-item">
+                <h3>Fès</h3>
+                <p>Découvrez l’une des plus anciennes villes du Maroc.</p>
+            </article>
+            <article class="destination-item">
+                <h3>Casablanca</h3>
+                <p>Venez découvrir la ville moderne et ses plages.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="activites" class="section">
+        <h2>Activités</h2>
+        <ul>
+            <li>Culturelles: Festivals, musées, artisanat</li>
+            <li>Aventure: Randonnée, sports nautiques</li>
+            <li>Gastronomie: Cours de cuisine, dégustations</li>
+            <li>Bien-être: Spa, yoga</li>
+        </ul>
+    </section>
+
+    <section id="pratique" class="section">
+        <h2>Pratique</h2>
+        <p>Informations pratiques pour les transports, l'hébergement, et les conseils de voyage.</p>
+    </section>
+<section id="evenements" class="section">
+        <h2>Événements</h2>
+        <p>Calendrier des festivals, concerts et expositions au Maroc.</p>
+        <button id="loadEvents">Voir les événements</button>
+        <div id="eventList"></div>
+    </section>
+
+    <section id="blog" class="section">
+        <h2>Blog</h2>
+        <p>Récits de voyage, conseils pratiques, et interviews.</p>
+    </section>
+
+    <section id="communaute" class="section">
+        <h2>Communauté</h2>
+        <p>Forum, témoignages, et liens vers les réseaux sociaux.</p>
+    </section>
+<section id="apropos" class="section">
+        <h2>À propos</h2>
+        <p>Présentation de la mission, de la vision, et de l’équipe du site.</p>
+    </section>
+
+    <footer id="contact" class="footer">
+        <h2>Contact</h2>
+        <p>Pour toute question ou demande d'informations.</p>
+        <form action="#" method="post" id="contactForm">
+            <input type="email" placeholder="Votre email" required>
+            <textarea placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userName = getCookie('userName');
+        if (userName) {
+            document.getElementById('greeting').innerText = Bienvenue, ${userName}!;
+        } else {
+            document.getElementById('greeting').innerText = 'Bienvenue sur le Portail Touristique du Maroc';
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userEmail = e.target.querySelector('input').value;
+            const userMessage = e.target.querySelector('textarea').value;
+            alert(Message envoyé! Email: ${userEmail}, Message: ${userMessage});
+        });
+
+        document.getElementById('loadEvents').addEventListener('click', function() {
+            const eventList = document.getElementById('eventList');
+            eventList.innerHTML = '<ul><li>Festival de Marrakech - Janvier</li><li>Concert à Casablanca - Février</li><li>Exposition à Rabat - Mars</li></ul>';
+        });
+    });
+
+    function getCookie(name) {
+        const value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return value ? value[2] : null;
+    }
+
+    function setCookie(name, value) {
+        document.cookie = name + "=" + value + "; path=/";
+    }
+</script>
+<style>
+        .section {
+            padding: 20px;
+            margin: 10px 0;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .destination-list {
+            display: flex;
+            justify-content: space-around;
+        }
+        .destination-item {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+        }
+        .destination-item h3 {
+            color: #ff6347;
+        }
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        #contactForm input, #contactForm textarea {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #contactForm button {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #contactForm button:hover {
+            background-color: #e53e34;
+        }
+    </style>
+</body>
+</html>
